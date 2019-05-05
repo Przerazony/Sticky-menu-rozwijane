@@ -1,0 +1,210 @@
+body
+{
+    background-color: #303030;
+    color: #FFFFFF;
+    
+    font-size: 20px;
+    /*przeglądarka ma domyślnie ustawione marginesy, jeśli chcemy je wyzerować trzeba ustawić tutaj dodatkowo margin na 0*/
+    margin: 0 !important;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 700;
+}
+.wrapper
+{
+    width:  100%;
+}
+.header
+{
+    width:  100%;
+    /*pierwsza wartość padding w pionie druga w poziomie*/
+    padding:  40px 0;
+}
+.logo
+{
+    width: 450px;
+    font-size: 48px;
+    /*obramowanie robczo:*/
+   /* border: 1px solid #FFFFFF;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+.nav
+{
+    width: 100%;
+    padding: 10px 0;
+    background-color: #c34f4f;
+    text-align: center;
+    border-top: 1px solid #751b1b;
+    border-bottom: 1px solid #751b1b;
+    
+}
+.content
+{
+    width: 1000px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: justify;
+    padding-top: 10px;
+}
+.socials
+{
+    width: 100%;
+    text-align:center;
+    background-color: #292929;
+
+}
+.socialdivs
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+}
+.fb
+{
+    width:250px;
+    height:155px;
+    float:left;
+    
+
+}
+/*nie wstawiaj spacji przed hover.*/
+.fb:hover
+{
+    background-color: #4668b3;
+}
+.yt
+{
+    width:250px;
+    height:155px;
+    float:left;
+
+}
+/*nie wstawiaj spacji przed hover.*/
+.yt:hover
+{
+    background-color: #d94348;
+}
+.tw
+{
+    width:250px;
+    height:155px;
+    float:left;
+
+}
+/*nie wstawiaj spacji przed hover.*/
+.tw:hover
+{
+    background-color: #3095d3;
+}
+.gplus
+{
+    width:250px;
+    height:155px;
+    float:left;
+
+}
+/*nie wstawiaj spacji przed hover.*/
+.gplus:hover
+{
+    background-color: #d95333;
+}
+.footer
+{
+    text-align:center;
+    background-color: #222222;
+    padding:30px;
+}
+.sticky
+{
+    width: 100%;
+    /*pozycja stała nieruchoma*/
+    position: fixed;
+    /*na stronie współrzędne obiektu zaczynają się od lewego górnego rogu przeglądarki, tam x,y wynosi 0,0 stąd chcąc wymuszając na klasie zmianę wspóżędnych w funkcji przypisujemy im je na sztywno*/
+    left: 0;
+    top: 0;
+    /*czy odległość ekranu do oczu użytkownika, oś z, z index określa zasłanianie się elementów, im coś ma więcej tego parametru to będzie na wierzchu, chcemy aby menu rozwijane wszystko zasłaniało.*/
+    z-index: 100;
+}
+ol
+{   
+    /*żeby nnie było niespodzianek z rozmieszeniem menu to padding i margin zerujemy*/
+    padding: 0;
+    margin: 0;
+    /*zerujemy wszysktkie bazowe elementy stylizujące listę w html*/
+    list-style-type: none;
+    /*wysokość menu*/
+    height: 40px;
+    /*aby napisy nie były całkiem przyklejone do górnej krawędzi (interlinia jak wiele miejsca w pionie ma 1 linia)*/
+    line-height: 200%;
+    /*konkurencja dla float:left to inline block, dzięki temu możemy tworzyć elementy blokowe w sposobie inline czyli obok siebie, nadanie tym elementom takiej właściwości przywróciło nam wyśrodkowanie użyte już przecież w klasie nav która jest pojemnikiem dla tych*/
+    display: inline-block;
+
+}
+/*stylizując hiperłącza w klasie ogólnej dodajemy "a" ale tylko te dla wybranej klasy*/
+ol a
+{
+    color: #ffffff;
+    text-decoration: none;
+    /*zachowuj się linku jak element blokowy jak div*/
+    display: block;
+
+}
+/*czytamy od prawej do lewej, stylizujemy element LI którego rodzicem jest OL (parent>child) stylizujemy teraz elementy li ale tylko te które są częścią elemetu ol*/
+ol > li
+{
+    float: left;
+    width: 150px;
+    height: 40px;
+    border-right: 1px dashed #751b1b;
+    
+}
+/*jeśli chcemy sięodnieść do piertwszego dziecka użytego*/
+ol > li:first-child
+{
+    border-left: 1px dashed #751b1b;
+}
+ol > li:hover
+{
+    background-color: #cf6969;
+}
+ol > li:hover > a
+{
+    color:#451717;  
+}
+ol > li >ul
+{
+    /*ponownie zerujemy domyślną formę kropkowania ul akturat tu*/
+    list-style-type: none;
+    padding: 0;
+    margin 0;
+    height:40px;
+    /*jak masz wyświetlić listę:?*/
+    display:none;
+}
+/*jak ma wyglądać lista wewnętrzna elementu UL ale tylko kiedy zachodzi hover elementu ol>li*/
+/*hover jest właściwością dystynktywną dlatego nie trzeba osobno każdego z menu okodować stąd css wie którą liste pokazać blokowo PSZTRYK MOC KASKADOWOŚCI */
+ol > li:hover > ul
+{
+    /*pokazuj jako element blokowy*/
+    display: block;
+}
+
+
+ol > li > ul > li
+{
+    background-color: #CF6969;
+    /*od teraz to będzie się ustawiać w pozycji relatywnej do rodzica czyli np jeżeli nasze menu ma ustawioną oś Z na powyżej wszystkiego to i dzieci będą wyżej*/
+    position: relative;
+    z-index: 100;
+    border-top: 1px dashed #751b1b;
+}
+ol > li > ul > li:hover
+{
+  background-color: #c34f4f;
+}
+ol > li > ul > li:hover > a
+{
+  color: #451717;
+}
